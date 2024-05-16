@@ -1,32 +1,28 @@
 import { useState } from 'react'
 
-const Hello = (props) =>{
-  console.log(props)
-  return(
-    <div>
-      <p>
-        {props.name}
-      </p>
-      <p>
-        {props.age}
-      </p>
-    </div>
-  )
-}
 
-const App = ()=>{
-  const a = 5
-  const b = 10
-  const now = new Date() 
+const Button = ({onClick, text}) => <button onClick={onClick}> {text} </button>
 
-  console.log(a,b,a+b, now)
+const Display = ({counter}) => <div> {counter} </div>
+  
+
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  const incrementCounter = () => setCounter(counter + 1)
+  
+  const resetCounter = () => setCounter(0)
+
+  const decrementCounter = () => setCounter(counter - 1)
+
   return (
-    <div>
-      <p>Greetings</p>
-      <Hello name='george' age={10+15} />
-      <Hello name='kyooti' age={2+15} />
-    </div>
+    <>
+      <Display counter={counter} />
+      <Button onClick={incrementCounter} text="Plus" />
+      <Button onClick={resetCounter} text="reset" />
+      <Button onClick={decrementCounter} text="minus" />
+    </>
   )
-}
 
+}
 export default App
