@@ -1,0 +1,10 @@
+docker run \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/work \
+    -w /work \
+    -it \
+    -p 5173:5173 \
+    -p 3001:3001 \
+    -e weather_api_key=0355f2bf30234365b5991241243105 \
+    node:20.11.0 \
+    $@
